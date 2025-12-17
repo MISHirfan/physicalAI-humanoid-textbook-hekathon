@@ -1,0 +1,182 @@
+/* Custom Modern Theme for Robotics Book */
+
+/* Setup Font (Inter/Roboto handled by import or system fonts first) */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap');
+
+:root {
+  /* HSL Color Palette for easier theming */
+  /* Primary: Neon Cyan */
+  --ifm-color-primary: #00d2ff;
+  --ifm-color-primary-dark: #00bdeb;
+  --ifm-color-primary-darker: #00b3df;
+  --ifm-color-primary-darkest: #0093b8;
+  --ifm-color-primary-light: #29dbff;
+  --ifm-color-primary-lighter: #3edfff;
+  --ifm-color-primary-lightest: #7cebff;
+
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+  --ifm-heading-font-family: 'Outfit', sans-serif;
+
+  --ifm-background-color: #f8f9fa;
+  --ifm-navbar-background-color: rgba(255, 255, 255, 0.85);
+  /* Glass effect base */
+
+  --ifm-code-font-size: 90%;
+  --ifm-border-radius-base: 12px;
+}
+
+/* Dark Mode - The intended premium experience */
+[data-theme='dark'] {
+  /* Deep Space Navy Background */
+  --ifm-background-color: #0b0f19;
+  --ifm-background-surface-color: #111827;
+
+  /* Neon Accents */
+  --ifm-color-primary: #00e5ff;
+  /* Cyan */
+  --ifm-color-primary-dark: #00aaff;
+
+  /* Glassmorphism */
+  --ifm-navbar-background-color: rgba(11, 15, 25, 0.7);
+
+  /* Text */
+  --ifm-font-color-base: #e0e7ff;
+  --ifm-heading-color: #ffffff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 1rem;
+  }
+  
+  .navbar__title {
+    font-size: 1.2rem;
+  }
+  
+  .navbar__items {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .navbar__item {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .hero__title {
+    font-size: 2.5rem;
+  }
+  
+  .hero__subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .card {
+    margin: 0.5rem 0;
+  }
+  
+  .footer__links {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0 0.5rem;
+  }
+  
+  .navbar__title {
+    font-size: 1rem;
+  }
+  
+  .hero__title {
+    font-size: 2rem;
+  }
+  
+  .hero__subtitle {
+    font-size: 1rem;
+  }
+  
+  .button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Global Styles */
+html[data-theme='dark'] body {
+  background-image:
+    radial-gradient(circle at 15% 50%, rgba(0, 229, 255, 0.08), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(124, 58, 237, 0.08), transparent 25%);
+  background-attachment: fixed;
+}
+
+/* Navbar */
+.navbar {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navbar__title {
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--ifm-color-primary), #bd34fe);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.5rem;
+}
+
+/* Buttons */
+.button--primary {
+  background: linear-gradient(135deg, var(--ifm-color-primary), #00aaff);
+  border: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px 0 rgba(0, 229, 255, 0.3);
+}
+
+.button--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 229, 255, 0.5);
+  background: linear-gradient(135deg, #00d2ff, #0099ff) !important;
+}
+
+/* Cards (Glassmorphism) */
+.card,
+[class^='card_'] {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--ifm-color-primary);
+}
+
+/* Typography Enhancements */
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: -0.02em;
+}
+
+.hero__title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  text-shadow: 0 0 40px rgba(0, 229, 255, 0.3);
+}
+
+.hero__subtitle {
+  font-size: 1.5rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}

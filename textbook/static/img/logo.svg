@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="cyber-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00e5ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2979ff;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      @keyframes pulse {
+        0% { opacity: 0.6; transform: scale(0.95); }
+        50% { opacity: 1; transform: scale(1.05); }
+        100% { opacity: 0.6; transform: scale(0.95); }
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      @keyframes dash {
+        to { stroke-dashoffset: 0; }
+      }
+      .core {
+        animation: pulse 3s infinite ease-in-out;
+        transform-origin: center;
+      }
+      .ring-out {
+        animation: spin 10s linear infinite;
+        transform-origin: center;
+      }
+      .ring-in {
+        animation: spin 5s linear infinite reverse;
+        transform-origin: center;
+      }
+      .circuit {
+        stroke-dasharray: 20;
+        stroke-dashoffset: 20;
+        animation: dash 2s linear forwards infinite;
+      }
+    </style>
+  </defs>
+
+  <!-- Outer Ring -->
+  <circle cx="50" cy="50" r="45" stroke="url(#cyber-grad)" stroke-width="2" opacity="0.3" />
+  
+  <!-- Rotating Tech Ring -->
+  <g class="ring-out">
+    <path d="M50 10 A40 40 0 0 1 90 50" stroke="url(#cyber-grad)" stroke-width="4" stroke-linecap="round" />
+    <path d="M50 90 A40 40 0 0 1 10 50" stroke="url(#cyber-grad)" stroke-width="4" stroke-linecap="round" />
+  </g>
+
+  <!-- Inner Rotating Ring -->
+  <g class="ring-in">
+    <circle cx="50" cy="50" r="28" stroke="#00e5ff" stroke-width="1" stroke-dasharray="4 6" opacity="0.7" />
+  </g>
+
+  <!-- Core Brain/Chip -->
+  <g class="core" filter="url(#glow)">
+    <hexagon points="50,35 63,42 63,58 50,65 37,58 37,42" fill="url(#cyber-grad)" />
+    <!-- Circuit lines -->
+    <path d="M50 35 V 25" stroke="#fff" stroke-width="2" opacity="0.8" />
+    <path d="M63 58 L 72 64" stroke="#fff" stroke-width="2" opacity="0.8" />
+    <path d="M37 58 L 28 64" stroke="#fff" stroke-width="2" opacity="0.8" />
+    
+    <circle cx="50" cy="50" r="5" fill="#fff" />
+  </g>
+
+</svg>

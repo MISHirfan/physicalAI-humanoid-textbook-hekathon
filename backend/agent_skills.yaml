@@ -1,0 +1,32 @@
+skills:
+  - name: Chapter Writer
+    description: Generates a full textbook chapter based on a topic.
+    input_schema:
+      topic: string
+      level: string
+    output_schema:
+      markdown_content: string
+
+  - name: Lab Generator
+    description: Creates a practical lab exercise for a given topic.
+    input_schema:
+      topic: string
+      tools: list[string]
+    output_schema:
+      lab_instructions: string
+      solution_code: string
+
+  - name: Quiz Generator
+    description: Generates a multiple-choice quiz.
+    input_schema:
+      topic: string
+      num_questions: integer
+    output_schema:
+      questions: list[object]
+
+  - name: Diagram Generator
+    description: Generates a Mermaid diagram or image prompt for a concept.
+    input_schema:
+      concept: string
+    output_schema:
+      diagram_code: string
